@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 15:45:47 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/02 16:08:51 by tishihar         ###   ########.fr       */
+/*   Created: 2025/04/02 15:56:00 by tishihar          #+#    #+#             */
+/*   Updated: 2025/04/02 16:02:41 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+static	void	*ft_memset(void *b, int c, size_t len);
+
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_info	*info;
+	void	*p;
 
-	// 1:コマンドライン引数をconfigにぶちこむ
-	if (set_config_info(ac, av, info))
-		return (1);
+	if (size && count > SIZE_MAX / size)
+		return (NULL);
+	p = malloc(count * size);
+	if (p == NULL)
+		return (NULL);
+	ft_memset(p, 0, count * size);
+	return (p);
+}
 
-	// 2:人数ぶんのスレッドと、共用リソースを用意して環境を整える(ここはとりあえず人数ぶんスレッドを用意。フォークはこのスコープ変数になるわけだ)
-	
-	
+static	void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*p;
 
-
-
-
-	// 3:mutexを使って競合をなくす
+	p = (unsigned char *)b;
+	while (len--)
+		*(p++) = (unsigned char)c;
+	return (b);
 }
