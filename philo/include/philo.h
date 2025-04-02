@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/03/21 17:59:52 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/02 15:05:29 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,12 @@ typedef	struct s_person
 	
 	// 基本情報
 	int				id;
-	
-
 	pthread_t		thread_id;
-
+	int				eat_count;
+	long			last_eat_time;
 
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-	
-
-
-
-
-
 } t_person;
 
 
