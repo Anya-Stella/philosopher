@@ -6,9 +6,12 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 14:12:59 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:33:22 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHILO_H
+# define PHILO_H
 
 // ---include---
 #include <stdio.h>
@@ -16,6 +19,8 @@
 #include <pthread.h>
 #include <stdint.h>
 #include <limits.h>
+#include <stdlib.h>
+#include <string.h>
 
 // ---macro---
 #define SUCCESS 0
@@ -23,11 +28,6 @@
 
 
 // ---structure---
-typedef	struct s_info
-{
-	pthread_mutex_t	*forks;
-	t_config		*config;
-} t_info;
 
 typedef struct s_config
 {
@@ -37,6 +37,12 @@ typedef struct s_config
 	long	time_to_sleep;
 	int		num_min_eat;
 } t_config;
+
+typedef	struct s_info
+{
+	pthread_mutex_t	*forks;
+	t_config		*config;
+} t_info;
 
 typedef	struct s_person
 {
@@ -58,3 +64,5 @@ int	set_info(int	argc, char** argv, t_info *info);
 void	*ft_calloc(size_t count, size_t size);
 long	ft_atol(const char *str);
 int		ft_atoi(const char *str);
+
+#endif

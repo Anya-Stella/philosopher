@@ -6,13 +6,14 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:25:54 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 14:18:26 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:28:55 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static	int	set_config(int	argc, char **argv, t_config	*config);
+static	int		set_config(int	argc, char **argv, t_config	*config);
+static	void	init_forks(pthread_mutex_t *forks, size_t num_philo);
 
 int	set_info(int	argc, char** argv, t_info *info)
 {

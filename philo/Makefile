@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:15:03 by tishihar          #+#    #+#              #
-#    Updated: 2025/03/19 15:42:58 by tishihar         ###   ########.fr        #
+#    Updated: 2025/04/03 14:27:23 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,24 +38,20 @@ SRC_DIR := src
 OBJ_DIR := bin
 
 # libft
-LIBFT_DIR := libft
-LIBFT_INC_DIR := $(LIBFT_DIR)
 
 # include
 INC_DIR := include
-INCLUDES := -I$(INC_DIR) -I$(LIBFT_INC_DIR)
+INCLUDES := -I$(INC_DIR)
 #===============================================================================
 #                              ソースファイル設定
 #===============================================================================
 
 SRCS := \
-	cmds_init.c \
-	cmds_run.c \
-	run_exec.c \
-	get_path.c \
-	utils.c \
 	test.c \
+	setting.c \
     main.c \
+	utils.c \
+	utils2.c \
 
 # replace object (.c → .o)
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
@@ -64,7 +60,7 @@ OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
 #===============================================================================
 
 # PATH of libft.a
-LIBFT := $(LIBFT_DIR)/libft.a
+
 #===============================================================================
 #                    　---ここから下は変えなくていい---
 #===============================================================================
@@ -84,8 +80,8 @@ run: all $(NAME)
 	$(VALGRIND) $(VALGRINDFLAGS) ./$(NAME) $(ARGS)
 
 # main(linker) rule
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LIBFT) $(LDFLAGS)
+$(NAME):  $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
 # compile rule
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -93,14 +89,11 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 # generate libft.a
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
 
 # cleans
 clean:
 	rm -f $(OBJS)
 	rm -rf $(OBJ_DIR)
-	$(MAKE) -C $(LIBFT_DIR) fclean
 fclean: clean
 	rm -f $(NAME)
 re: fclean all

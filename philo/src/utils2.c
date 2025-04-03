@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:52:23 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 13:57:57 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:34:33 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ static int	ft_isspace(int c)
 		|| c == ' ')
 		return (1);
 	return (0);
+}
+
+static	int	ft_isdigit(int c)
+{
+	return (48 <= c && c <= 57);
 }
 
 long	ft_atol(const char *str)
