@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:47 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/02 16:08:51 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 13:48:35 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	t_info	*info;
+	t_info	info;
 
 	// 1:コマンドライン引数をconfigにぶちこむ
-	if (set_config_info(ac, av, info))
+	if (set_info(ac, av, &info))
 		return (1);
 
 	// 2:人数ぶんのスレッドと、共用リソースを用意して環境を整える(ここはとりあえず人数ぶんスレッドを用意。フォークはこのスコープ変数になるわけだ)

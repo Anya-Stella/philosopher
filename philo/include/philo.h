@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/02 16:10:20 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:12:59 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdbool.h>
 #include <pthread.h>
 #include <stdint.h>
+#include <limits.h>
 
 // ---macro---
 #define SUCCESS 0
@@ -49,18 +50,11 @@ typedef	struct s_person
 } t_person;
 
 
-
-
-
-
-
-
-
-
-
 // ---functions---
 // setting
-int	set_config_info(int	argc, char** argv, t_info *info);
+int	set_info(int	argc, char** argv, t_info *info);
 
 // utils
 void	*ft_calloc(size_t count, size_t size);
+long	ft_atol(const char *str);
+int		ft_atoi(const char *str);
