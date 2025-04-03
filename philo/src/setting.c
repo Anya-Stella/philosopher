@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:25:54 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 14:09:18 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:18:26 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	set_info(int	argc, char** argv, t_info *info)
 
 static	int	set_config(int	argc, char **argv, t_config	*config)
 {
-	if (argc < 5)
+	if (argc != 5 && argc != 6)
 		return (FAILURE);
 	config->num_philo = ft_atoi(argv[1]);
 	config->time_to_die = ft_atol(argv[2]);
