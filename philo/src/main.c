@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:47 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 16:21:41 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/03 16:55:17 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,26 @@ int check_and_print_info(t_info *info)
 
 int	main(int ac, char **av)
 {
-	t_info	info;
+	t_info		info;
+	t_person	*persons;
 
-	// 1:コマンドライン引数をconfigにぶちこむ
-	if (set_info(ac, av, &info))
+	if (set_info(ac, av, &info) == FAILURE)
 		return (1);
+	persons = create_init_persons(&info);
 	
 	
-	// 2:人数ぶんのスレッドと、共用リソースを用意して環境を整える(ここはとりあえず人数ぶんスレッドを用意。フォークはこのスコープ変数になるわけだ)
-	check_and_print_info(&info);
 	
-	
-
-
-
-
 	// 3:mutexを使って競合をなくす
 
+
+	// test
+	check_and_print_info(&info);
+
+	// free
+	free(info.config);
+	free(info.forks);
+	// persons
 	return (0);
 }
+
+
