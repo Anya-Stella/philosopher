@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/08 16:40:16 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:03:44 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef	struct s_info
 	pthread_mutex_t	print_mutex;
 	
 	pthread_mutex_t	*forks;
+
+	t_person		*persons;
 } t_info;
 
 typedef	struct s_person

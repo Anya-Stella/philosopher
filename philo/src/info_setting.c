@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:16:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 12:59:03 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:04:10 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static	int	init_base_variable(t_info *info)
 {
 	info->start_ms = 0;
 	info->finished = false;
+	info->persons = NULL;
 
 	if (pthread_mutex_init(&info->end_mutex, NULL))
 		return (FAILURE);
