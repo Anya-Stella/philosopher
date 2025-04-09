@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:15:03 by tishihar          #+#    #+#              #
-#    Updated: 2025/04/03 14:27:23 by tishihar         ###   ########.fr        #
+#    Updated: 2025/04/09 15:24:54 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,11 +47,13 @@ INCLUDES := -I$(INC_DIR)
 #===============================================================================
 
 SRCS := \
-	test.c \
-	setting.c \
+	create_persons.c \
+	destroy.c \
+	info_setting.c \
     main.c \
 	utils.c \
 	utils2.c \
+	test.c \
 
 # replace object (.c → .o)
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)

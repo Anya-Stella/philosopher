@@ -6,11 +6,13 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 16:40:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 14:18:43 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:08:41 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static	void	init_person(t_person *person, t_info *info, int id);
 
 // this func initialize person structre, exept for thread id.
 t_person	*create_init_persons(t_info	*info)

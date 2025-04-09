@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 14:18:52 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:24:29 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@
 
 
 // ---structure---
+typedef struct s_info   t_info;
+typedef struct s_person t_person; 
 
 typedef struct s_config
 {
-	int		num_philo;
-	long	time_to_die;
-	long	time_to_eat;
-	long	time_to_sleep;
-	int		num_min_eat;
+	int				num_philo;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	int				num_min_eat;
 } t_config;
 
 typedef	struct s_info
@@ -81,5 +83,8 @@ void		destroy_forks(t_info *info, int destroy_forks_size);
 void		*ft_calloc(size_t count, size_t size);
 long		ft_atol(const char *str);
 int			ft_atoi(const char *str);
+
+//test
+void		dump_info(const t_info *info);
 
 #endif
