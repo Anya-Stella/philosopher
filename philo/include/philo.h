@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 13:46:53 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:18:52 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,19 @@ typedef	struct s_person
 
 // ---functions---
 // setting
-int		init_info(int ac, char **av, t_info *info);
-void	destroy_info(t_info *info);
-void	destroy_forks(t_info *info, int destroy_forks_size);
+int			init_info(int ac, char **av, t_info *info);
+void		set_persons_to_info(t_info *info, t_person *persons);
 
 // persons
+t_person	*create_init_persons(t_info	*info);
 
+// destroy
+void		destroy_info(t_info *info);
+void		destroy_forks(t_info *info, int destroy_forks_size);
 
 // utils
-void	*ft_calloc(size_t count, size_t size);
-long	ft_atol(const char *str);
-int		ft_atoi(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+long		ft_atol(const char *str);
+int			ft_atoi(const char *str);
 
 #endif
