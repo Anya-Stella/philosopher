@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:47 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 15:39:20 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 16:03:34 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,13 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	set_persons_to_info(&info, persons);
-	
-	// スレッドをpersonsにたいしてつくってつまりrunする
-	// philo_launch();
-	
-	
-	
-	
+	philo_launch(persons);
+
 	// test
 	// dump_info(&info);
 
-	
 	// destroy(info, persons)
+	// destroy_info(&info);
 	return (0);
 }
 
