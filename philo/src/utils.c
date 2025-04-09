@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:56:00 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 13:52:12 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:38:48 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,3 @@ void	*ft_calloc(size_t count, size_t size)
 	memset(p, 0, count * size);
 	return (p);
 }
-
-

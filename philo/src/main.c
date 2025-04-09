@@ -6,14 +6,11 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:47 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 15:23:42 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:39:20 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-
-
 
 int	main(int ac, char **av)
 {
@@ -32,12 +29,12 @@ int	main(int ac, char **av)
 	
 	// スレッドをpersonsにたいしてつくってつまりrunする
 	// philo_launch();
-	dump_info(&info);
 	
 	
-
-
+	
+	
 	// test
+	// dump_info(&info);
 
 	
 	// destroy(info, persons)

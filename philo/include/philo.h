@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 15:24:29 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:29:02 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,21 @@
 # define PHILO_H
 
 // ---include---
-#include <stdio.h>
-#include <stdbool.h>
-#include <pthread.h>
-#include <stdint.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <string.h>
+# include <stdio.h>
+# include <stdbool.h>
+# include <pthread.h>
+# include <stdint.h>
+# include <limits.h>
+# include <stdlib.h>
+# include <string.h>
 
 // ---macro---
-#define SUCCESS 0
-#define FAILURE 1
-
+# define SUCCESS 0
+# define FAILURE 1
 
 // ---structure---
-typedef struct s_info   t_info;
-typedef struct s_person t_person; 
+typedef struct s_info	t_info;
+typedef struct s_person	t_person;
 
 typedef struct s_config
 {
@@ -38,34 +37,29 @@ typedef struct s_config
 	long			time_to_eat;
 	long			time_to_sleep;
 	int				num_min_eat;
-} t_config;
+}	t_config;
 
-typedef	struct s_info
+typedef struct s_info
 {
 	t_config		cfg;
 	long			start_ms;
 	bool			finished;
-	
 	pthread_mutex_t	end_mutex;
 	pthread_mutex_t	print_mutex;
-	
 	pthread_mutex_t	*forks;
-
 	t_person		*persons;
-} t_info;
+}	t_info;
 
-typedef	struct s_person
+typedef struct s_person
 {
 	pthread_t		thread_id;
-	
 	t_info			*info;
 	int				id;
 	int				eat_count;
 	long			last_eat_time;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
-} t_person;
-
+}	t_person;
 
 // ---functions---
 // setting

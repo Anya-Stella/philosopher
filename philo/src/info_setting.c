@@ -6,16 +6,16 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:16:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 14:05:51 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:38:10 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static	void	init_cfg(int ac, char **av, t_info *info);
-static	int		init_base_variable(t_info *info);
-static	int		init_forks(t_info *info);
-static	int		validate_arg(int ac, char **av);
+static	int	init_base_variable(t_info *info);
+static	int	init_forks(t_info *info);
+static	int	validate_arg(int ac, char **av);
 
 // this func initialize info, exept for persons.
 int	init_info(int ac, char **av, t_info *info)
@@ -51,7 +51,6 @@ static	int	init_base_variable(t_info *info)
 	info->start_ms = 0;
 	info->finished = false;
 	info->persons = NULL;
-
 	if (pthread_mutex_init(&info->end_mutex, NULL))
 		return (FAILURE);
 	if (pthread_mutex_init(&info->print_mutex, NULL))
@@ -66,7 +65,9 @@ static	int	init_forks(t_info *info)
 {
 	int	i;
 
-	info->forks = (pthread_mutex_t *)ft_calloc(info->cfg.num_philo, sizeof(pthread_mutex_t));
+	info->forks
+		= (pthread_mutex_t *)ft_calloc(
+			info->cfg.num_philo, sizeof(pthread_mutex_t));
 	if (!(info->forks))
 		return (FAILURE);
 	i = 0;

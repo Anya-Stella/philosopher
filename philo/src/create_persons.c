@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 16:40:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 15:08:41 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 15:38:32 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_person	*create_init_persons(t_info	*info)
 	return (persons);
 }
 
-void		set_persons_to_info(t_info *info, t_person *persons)
+void	set_persons_to_info(t_info *info, t_person *persons)
 {
 	info->persons = persons;
 }
