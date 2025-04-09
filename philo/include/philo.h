@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/03 16:51:04 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:40:16 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,19 @@ typedef struct s_config
 
 typedef	struct s_info
 {
+	t_config		cfg;
+	long			start_ms;
+	bool			finished;
+	
+	pthread_mutex_t	end_mutex;
+	pthread_mutex_t	print_mutex;
+	
 	pthread_mutex_t	*forks;
-	t_config		*config;
 } t_info;
 
 typedef	struct s_person
 {
-	t_info	*info;
+	t_info			*info;
 	int				id;
 	pthread_t		thread_id;
 	int				eat_count;
