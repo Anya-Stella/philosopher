@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:16:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 13:04:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 14:05:51 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static	int		init_base_variable(t_info *info);
 static	int		init_forks(t_info *info);
 static	int		validate_arg(int ac, char **av);
 
+// this func initialize info, exept for persons.
 int	init_info(int ac, char **av, t_info *info)
 {
 	if (validate_arg(ac, av) == FAILURE)
@@ -92,7 +93,7 @@ static	int	validate_arg(int ac, char **av)
 		|| ft_atol(av[2]) <= 0
 		|| ft_atol(av[3]) <= 0
 		|| ft_atol(av[4]) <= 0
-		|| (ac == 6 && ft_atoi(av[5]) < 0)
+		|| (ac == 6 && ft_atoi(av[5]) <= 0)
 	)
 	{
 		printf("error: argument needs more than zero.\n");

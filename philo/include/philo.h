@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 13:03:44 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/09 13:46:53 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ typedef	struct s_info
 
 typedef	struct s_person
 {
+	pthread_t		thread_id;
+	
 	t_info			*info;
 	int				id;
-	pthread_t		thread_id;
 	int				eat_count;
 	long			last_eat_time;
 	pthread_mutex_t	*l_fork;
@@ -66,7 +67,12 @@ typedef	struct s_person
 
 // ---functions---
 // setting
-int	set_info(int	argc, char** argv, t_info *info);
+int		init_info(int ac, char **av, t_info *info);
+void	destroy_info(t_info *info);
+void	destroy_forks(t_info *info, int destroy_forks_size);
+
+// persons
+
 
 // utils
 void	*ft_calloc(size_t count, size_t size);
