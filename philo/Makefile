@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:15:03 by tishihar          #+#    #+#              #
-#    Updated: 2025/04/09 15:24:54 by tishihar         ###   ########.fr        #
+#    Updated: 2025/04/10 13:54:56 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,9 @@ SRCS := \
 	create_persons.c \
 	destroy.c \
 	info_setting.c \
+	time.c \
     main.c \
 	utils.c \
-	utils2.c \
 	test.c \
 
 # replace object (.c → .o)

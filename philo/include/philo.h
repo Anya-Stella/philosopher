@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 15:29:02 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:14:02 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/time.h>
 
 // ---macro---
 # define SUCCESS 0
@@ -69,9 +70,16 @@ void		set_persons_to_info(t_info *info, t_person *persons);
 // persons
 t_person	*create_init_persons(t_info	*info);
 
+// launch
+void	philo_launch(t_person *persons, t_info *info);
+
 // destroy
 void		destroy_info(t_info *info);
 void		destroy_forks(t_info *info, int destroy_forks_size);
+
+// time
+long	get_current_time();
+void	set_start_ms(t_info *info);
 
 // utils
 void		*ft_calloc(size_t count, size_t size);
@@ -79,6 +87,6 @@ long		ft_atol(const char *str);
 int			ft_atoi(const char *str);
 
 //test
-void		dump_info(const t_info *info);
+// void		dump_info(const t_info *info);
 
 #endif
