@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:09:25 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 15:31:18 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/11 18:19:06 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	void	*philo_routine(void *person);
 static	void	*monitor_routine(void *person);
-static	int	check_persons_die(t_info *info);
+static	int		check_finished(t_info *info);
 
 // this func launch the philosopher simulation.
 // At first, we establish start_ms, 
@@ -29,7 +29,6 @@ void	philo_launch(t_person *persons, t_info *info)
 	i = 0;
 	while (i < info->cfg.num_philo)
 	{
-		// こいつらは呼ばれた順に食べていく
 		pthread_create(&persons[i].thread_id, NULL, philo_routine, &persons[i]);
 		i++;
 	}
@@ -57,7 +56,7 @@ static	void	*monitor_routine(void *p)
 	info = p;
 	while (1)
 	{
-		if (check_persons_die(info))
+		if (check_finished(info))
 		{
 			pthread_mutex_lock(&info->end_mutex);
 			info->finished = true;
@@ -69,22 +68,28 @@ static	void	*monitor_routine(void *p)
 	return (NULL);
 }
 
-static	int	check_persons_die(t_info *info)
+static	int	check_finished(t_info *info)
 {
-	int i;
+	int 	i;
+	bool	is_all_finished;
 
 	i = 0;
+	is_all_finished = true;
 	while (i < info->cfg.num_philo)
 	{
-		pthread_mutex_lock(&info->last_eat_mutex);
+		pthread_mutex_lock(&info->eat_mutex);
 		if (get_time_diff(get_current_time(), info->persons[i].last_eat_time) >= info->cfg.time_to_die)
 		{
-			// pthread_mutex_lock(&info->print_mutex);
 			print_dead(info, info->persons[i].id, get_time_diff(get_current_time(), info->persons[i].last_eat_time));
+			pthread_mutex_unlock(&info->eat_mutex);
 			return (1);
 		}
-		pthread_mutex_unlock(&info->last_eat_mutex);
+		if (info->persons[i].eat_count < info->cfg.num_min_eat)
+			is_all_finished = false;
+		pthread_mutex_unlock(&info->eat_mutex);
 		i++;
 	}
+	if (is_all_finished)
+		return (1);
 	return (0);
 }

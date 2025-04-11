@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 12:40:32 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/11 17:43:54 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,16 @@ typedef struct s_config
 	int				num_min_eat;
 }	t_config;
 
+// explanation of info mutex;
+// eat_mutex: this protects the eat_count, and last_eat_time;
+// end_mutex: this protects the finished flag;
+// print_mutex: this protects the using printf.
 typedef struct s_info
 {
 	t_config		cfg;
 	long			start_ms;
 	bool			finished;
-	pthread_mutex_t	last_eat_mutex;
+	pthread_mutex_t	eat_mutex;
 	pthread_mutex_t	end_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	*forks;
