@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:09:25 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 12:43:11 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/11 15:31:18 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static	void	*philo_routine(void *person);
 static	void	*monitor_routine(void *person);
+static	int	check_persons_die(t_info *info);
 
 // this func launch the philosopher simulation.
 // At first, we establish start_ms, 
@@ -56,16 +57,34 @@ static	void	*monitor_routine(void *p)
 	info = p;
 	while (1)
 	{
-		if (!info->finished)
-			break;
-		if (check_persons_die())
+		if (check_persons_die(info))
 		{
 			pthread_mutex_lock(&info->end_mutex);
 			info->finished = true;
 			pthread_mutex_unlock(&info->end_mutex);
+			break;
 		}
 		usleep(100);
 	}
 	return (NULL);
 }
 
+static	int	check_persons_die(t_info *info)
+{
+	int i;
+
+	i = 0;
+	while (i < info->cfg.num_philo)
+	{
+		pthread_mutex_lock(&info->last_eat_mutex);
+		if (get_time_diff(get_current_time(), info->persons[i].last_eat_time) >= info->cfg.time_to_die)
+		{
+			// pthread_mutex_lock(&info->print_mutex);
+			print_dead(info, info->persons[i].id, get_time_diff(get_current_time(), info->persons[i].last_eat_time));
+			return (1);
+		}
+		pthread_mutex_unlock(&info->last_eat_mutex);
+		i++;
+	}
+	return (0);
+}

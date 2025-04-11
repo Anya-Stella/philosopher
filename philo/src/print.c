@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 13:52:23 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 14:38:55 by tishihar         ###   ########.fr       */
+/*   Created: 2025/04/11 15:02:42 by tishihar          #+#    #+#             */
+/*   Updated: 2025/04/11 15:08:44 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	get_current_time()
+void	print_dead(t_info	*info, int	id, long time_stamp)
 {
-	struct timeval tv;
-
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
-
-void	set_start_ms(t_info *info)
-{
-	info->start_ms = get_current_time();
-}
-
-long	get_time_diff(long current_time, long start_time)
-{
-	return (current_time - start_time);
+	pthread_mutex_lock(&info->print_mutex);
+	printf("%ld %i died\n", time_stamp, id);
+	pthread_mutex_unlock(&info->print_mutex);
 }
