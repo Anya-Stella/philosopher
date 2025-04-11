@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 16:09:25 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 18:19:06 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/11 19:28:34 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	philo_launch(t_person *persons, t_info *info)
 	}
 }
 
-// start_msでスレッド内関数が起動するルーティン関数つくる
-// 誰かが死んだとき、その後シュミレーションは終了する
-
+//　この関数は。finishedであるかを確認しながら、独立して生活させればいい。finishedの時点でprintが使えなくなるので、とにかく生活させればいい、
+// が、どうやってこっちのスレッドを抜けるのか？
 static	void	*philo_routine(void *p)
 {
 	
@@ -63,7 +62,7 @@ static	void	*monitor_routine(void *p)
 			pthread_mutex_unlock(&info->end_mutex);
 			break;
 		}
-		usleep(100);
+		usleep(1000);
 	}
 	return (NULL);
 }
@@ -84,7 +83,7 @@ static	int	check_finished(t_info *info)
 			pthread_mutex_unlock(&info->eat_mutex);
 			return (1);
 		}
-		if (info->persons[i].eat_count < info->cfg.num_min_eat)
+		if (info->persons[i].eat_count < info->cfg.num_min_eat || info->cfg.num_min_eat < 0)
 			is_all_finished = false;
 		pthread_mutex_unlock(&info->eat_mutex);
 		i++;
