@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/10 16:14:02 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:40:32 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 // ---macro---
 # define SUCCESS 0
@@ -45,6 +46,7 @@ typedef struct s_info
 	t_config		cfg;
 	long			start_ms;
 	bool			finished;
+	pthread_mutex_t	last_eat_mutex;
 	pthread_mutex_t	end_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	*forks;

@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:41:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 14:14:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/11 12:42:46 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	destroy_info(t_info *info)
 	destroy_forks(info, info->cfg.num_philo);
 	pthread_mutex_destroy(&info->end_mutex);
 	pthread_mutex_destroy(&info->print_mutex);
+	pthread_mutex_destroy(&info->last_eat_mutex);
 }
 
 void	destroy_forks(t_info *info, int destroy_forks_size)
