@@ -6,11 +6,13 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:24:35 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 16:25:05 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:37:02 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static	int	check_finished(t_info *info);
 
 void	*monitor_routine(void *p)
 {

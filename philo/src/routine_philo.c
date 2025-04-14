@@ -6,11 +6,16 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 18:33:43 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:39:52 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static	void	take_fork(t_person *person, int id);
+static	void	put_down_fork(t_person *person);
+static	void	eat_meal(t_person *person, int id);
+static	void	sleep_philo(t_person *person, int id);
 
 // Q. Why we solve problem of philo_dead_lock by Even or Odd?
 // A. if there are ABCD people order by
@@ -31,7 +36,7 @@ void	*philo_routine(void *p)
 		if (person->info->finished)
 		{
 			pthread_mutex_unlock(&person->info->end_mutex);
-			return ;
+			break;
 		}
 		pthread_mutex_unlock(&person->info->end_mutex);
 		take_fork(person, id);
@@ -39,6 +44,7 @@ void	*philo_routine(void *p)
 		put_down_fork(person);
 		sleep_philo(person, id);
 	}
+	return (NULL);
 }
 
 static	void	take_fork(t_person *person, int id)

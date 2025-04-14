@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:15:03 by tishihar          #+#    #+#              #
-#    Updated: 2025/04/14 18:35:46 by tishihar         ###   ########.fr        #
+#    Updated: 2025/04/14 18:36:36 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRCS := \
 	create_persons.c \
 	destroy.c \
 	info_setting.c \
-	launch-philo.c \
+	launch_philo.c \
 	routine_monitor.c \
 	routine_philo.c \
 	print.c \
