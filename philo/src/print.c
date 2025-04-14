@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 15:02:42 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 18:26:42 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:28:53 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_eat(t_info	*info, int	id, long time_stamp)
 		return ;
 	}
 	pthread_mutex_unlock(&info->end_mutex);
-	printf("%ld %i is eatingk\n", time_stamp, id);
+	printf("%ld %i is eating\n", time_stamp, id);
 	pthread_mutex_unlock(&info->print_mutex);
 }
 

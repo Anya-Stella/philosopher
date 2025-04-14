@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 17:35:07 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:43:48 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ long		ft_atol(const char *str);
 int			ft_atoi(const char *str);
 
 //test
-// void		dump_info(const t_info *info);
+void		dump_info(const t_info *info);
 
 #endif
