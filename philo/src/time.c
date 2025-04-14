@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:52:23 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 14:38:55 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:36:24 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,9 @@ void	set_start_ms(t_info *info)
 long	get_time_diff(long current_time, long start_time)
 {
 	return (current_time - start_time);
+}
+
+long	get_time_stamp(long start_time)
+{
+	return (get_time_diff(get_current_time(), start_time));
 }
