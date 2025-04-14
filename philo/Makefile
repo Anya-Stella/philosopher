@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:15:03 by tishihar          #+#    #+#              #
-#    Updated: 2025/04/10 13:54:56 by tishihar         ###   ########.fr        #
+#    Updated: 2025/04/14 18:35:46 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,10 +50,14 @@ SRCS := \
 	create_persons.c \
 	destroy.c \
 	info_setting.c \
+	launch-philo.c \
+	routine_monitor.c \
+	routine_philo.c \
+	print.c \
 	time.c \
-    main.c \
 	utils.c \
 	test.c \
+    main.c \
 
 # replace object (.c → .o)
 OBJS := $(SRCS:%.c=$(OBJ_DIR)/%.o)
