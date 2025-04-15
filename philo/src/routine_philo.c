@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/15 14:17:29 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/15 14:39:50 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ void	*philo_routine(void *p)
 
 static	void	take_fork(t_person *person, int id)
 {
-	if (id % 2)
+	if (id % 2 == 1)
 	{
-		pthread_mutex_lock(person->r_fork);
-		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
 		pthread_mutex_lock(person->l_fork);
+		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
+		pthread_mutex_lock(person->r_fork);
 		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
 	}
 	else
 	{
-		pthread_mutex_lock(person->l_fork);
-		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
 		pthread_mutex_lock(person->r_fork);
+		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
+		pthread_mutex_lock(person->l_fork);
 		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
 	}
 }
