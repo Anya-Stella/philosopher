@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:16:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 19:49:17 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/15 21:38:29 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static	int	validate_arg(int ac, char **av)
 		|| (ac == 6 && ft_atoi(av[5]) <= 0)
 	)
 	{
-		printf("error: argument needs more than zero.\n");
+		printf("error: invalid argument.\n");
 		return (FAILURE);
 	}
 	return (SUCCESS);
