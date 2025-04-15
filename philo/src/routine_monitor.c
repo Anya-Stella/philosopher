@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:24:35 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/15 13:44:07 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:00:31 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*monitor_routine(void *p)
 			pthread_mutex_unlock(&info->end_mutex);
 			break;
 		}
-		usleep(1000);
+		usleep(1 * 1000);
 	}
 	return (NULL);
 }
