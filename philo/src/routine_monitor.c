@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:24:35 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 19:28:40 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:44:07 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ static	int	check_finished(t_info *info)
 	is_all_finished = true;
 	while (i < info->cfg.num_philo)
 	{
-		pthread_mutex_lock(&info->eat_mutex);
+		pthread_mutex_lock(&info->persons[i].eat_mutex);
 		if (get_time_diff(get_current_time(), info->persons[i].last_eat_time) >= info->cfg.time_to_die)
 		{
-			print_dead(info, info->persons[i].id, get_time_diff(get_current_time(), info->persons[i].last_eat_time));
-			pthread_mutex_unlock(&info->eat_mutex);
+			print_dead(info, info->persons[i].id, get_time_stamp(info->start_ms));
+			pthread_mutex_unlock(&info->persons[i].eat_mutex);
 			return (1);
 		}
 		if (info->persons[i].eat_count < info->cfg.num_min_eat || info->cfg.num_min_eat < 0)
 			is_all_finished = false;
-		pthread_mutex_unlock(&info->eat_mutex);
+		pthread_mutex_unlock(&info->persons[i].eat_mutex);
 		i++;
 	}
 	if (is_all_finished)

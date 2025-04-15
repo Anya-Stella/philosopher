@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:41:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 17:35:25 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:08:01 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,19 @@ void	destroy_info(t_info *info)
 	destroy_forks(info, info->cfg.num_philo);
 	pthread_mutex_destroy(&info->end_mutex);
 	pthread_mutex_destroy(&info->print_mutex);
-	pthread_mutex_destroy(&info->eat_mutex);
+}
+
+void	destroy_persons(t_person *persons)
+{
+	int i;
+
+	i = 0;
+	while (i < persons->info->cfg.num_philo)
+	{
+		pthread_mutex_destroy(&persons[i].eat_mutex);
+		i++;
+	}
+	free(persons);
 }
 
 void	destroy_forks(t_info *info, int destroy_forks_size)
@@ -33,4 +45,16 @@ void	destroy_forks(t_info *info, int destroy_forks_size)
 	}
 	free(info->forks);
 	info->forks = NULL;
+}
+
+void	destroy_eatmutexes(t_person *persons, int destroy_mutex_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < destroy_mutex_size)
+	{
+		pthread_mutex_destroy(&persons[i].eat_mutex);
+		i++;
+	}
 }

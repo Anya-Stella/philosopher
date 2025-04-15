@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:16:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/11 17:35:25 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:49:17 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	init_info(int ac, char **av, t_info *info)
 	{
 		pthread_mutex_destroy(&info->end_mutex);
 		pthread_mutex_destroy(&info->print_mutex);
-		pthread_mutex_destroy(&info->eat_mutex);
 		return (FAILURE);
 	}
 	return (SUCCESS);
@@ -56,12 +55,6 @@ static	int	init_base_variable(t_info *info)
 		return (FAILURE);
 	if (pthread_mutex_init(&info->print_mutex, NULL))
 	{
-		pthread_mutex_destroy(&info->end_mutex);
-		return (FAILURE);
-	}
-	if (pthread_mutex_init(&info->eat_mutex, NULL))
-	{
-		pthread_mutex_destroy(&info->print_mutex);
 		pthread_mutex_destroy(&info->end_mutex);
 		return (FAILURE);
 	}

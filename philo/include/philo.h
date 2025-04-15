@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 18:43:48 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/15 13:35:49 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_info
 	t_config		cfg;
 	long			start_ms;
 	bool			finished;
-	pthread_mutex_t	eat_mutex;
 	pthread_mutex_t	end_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	*forks;
@@ -64,6 +63,7 @@ typedef struct s_person
 	int				id;
 	int				eat_count;
 	long			last_eat_time;
+	pthread_mutex_t	eat_mutex;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*r_fork;
 }	t_person;
@@ -83,7 +83,9 @@ void	*philo_routine(void *p);
 
 // destroy
 void		destroy_info(t_info *info);
+void		destroy_persons(t_person *persons);
 void		destroy_forks(t_info *info, int destroy_forks_size);
+void		destroy_eatmutexes(t_person *persons, int destroy_mutex_size);
 long		get_time_diff(long current_time, long start_time);
 
 // time
