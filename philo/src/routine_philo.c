@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/16 13:56:28 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:01:40 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	*philo_routine(void *p)
 		if (person->info->finished)
 		{
 			pthread_mutex_unlock(&person->info->end_mutex);
-			break;
+			break ;
 		}
 		pthread_mutex_unlock(&person->info->end_mutex);
 		take_fork(person, id);
@@ -49,24 +49,27 @@ void	*philo_routine(void *p)
 
 static	void	take_fork(t_person *person, int id)
 {
+	long	start_ms;
+
+	start_ms = person->info->start_ms;
 	if (id % 2 == 1)
 	{
 		usleep((person->info->cfg.time_to_eat * 1000) / 2);
 		pthread_mutex_lock(person->l_fork);
-		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
+		print_taken_fork(person->info, id, get_time_stamp(start_ms));
 		pthread_mutex_lock(person->r_fork);
-		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
+		print_taken_fork(person->info, id, get_time_stamp(start_ms));
 	}
 	else
 	{
 		pthread_mutex_lock(person->r_fork);
-		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
+		print_taken_fork(person->info, id, get_time_stamp(start_ms));
 		pthread_mutex_lock(person->l_fork);
-		print_taken_fork(person->info, id, get_time_stamp(person->info->start_ms));
+		print_taken_fork(person->info, id, get_time_stamp(start_ms));
 	}
 }
 
-static void		put_down_fork(t_person *person)
+static void	put_down_fork(t_person *person)
 {
 	pthread_mutex_unlock(person->l_fork);
 	pthread_mutex_unlock(person->r_fork);
@@ -77,7 +80,6 @@ static	void	eat_meal(t_person *person, int id)
 	pthread_mutex_lock(&person->eat_mutex);
 	person->last_eat_time = get_current_time();
 	pthread_mutex_unlock(&person->eat_mutex);
-	
 	print_eat(person->info, id, get_time_stamp(person->info->start_ms));
 	usleep(person->info->cfg.time_to_eat * 1000);
 	pthread_mutex_lock(&person->eat_mutex);

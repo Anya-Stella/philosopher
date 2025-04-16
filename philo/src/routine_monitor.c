@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:24:35 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/16 14:34:08 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:56:22 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	int	check_finished(t_info *info, int *death_id);
 
 void	*monitor_routine(void *p)
 {
-	t_info *info;
+	t_info	*info;
 	int		death_id;
 
 	info = (t_info *)p;
@@ -28,7 +28,7 @@ void	*monitor_routine(void *p)
 			print_dead(info, death_id, get_time_stamp(info->start_ms));
 			info->finished = true;
 			pthread_mutex_unlock(&info->end_mutex);
-			break;
+			break ;
 		}
 		usleep(1 * 1000);
 	}
@@ -37,7 +37,7 @@ void	*monitor_routine(void *p)
 
 static	int	check_finished(t_info *info, int *death_id)
 {
-	int 	i;
+	int		i;
 	bool	is_all_finished;
 
 	i = 0;
@@ -45,13 +45,15 @@ static	int	check_finished(t_info *info, int *death_id)
 	while (i < info->cfg.num_philo)
 	{
 		pthread_mutex_lock(&info->persons[i].eat_mutex);
-		if (get_time_diff(get_current_time(), info->persons[i].last_eat_time) >= info->cfg.time_to_die)
+		if (get_time_diff(get_current_time(), info->persons[i].last_eat_time)
+			>= info->cfg.time_to_die)
 		{
 			*death_id = i + 1;
 			pthread_mutex_unlock(&info->persons[i].eat_mutex);
 			return (1);
 		}
-		if (info->persons[i].eat_count < info->cfg.num_min_eat || info->cfg.num_min_eat < 0)
+		if (info->persons[i].eat_count < info->cfg.num_min_eat
+			|| info->cfg.num_min_eat < 0)
 			is_all_finished = false;
 		pthread_mutex_unlock(&info->persons[i].eat_mutex);
 		i++;

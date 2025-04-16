@@ -6,15 +6,15 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 13:52:23 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 17:36:24 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:51:22 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	get_current_time()
+long	get_current_time(void)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);

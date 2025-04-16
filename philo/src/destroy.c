@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:41:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/14 20:08:01 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:50:28 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	destroy_info(t_info *info)
 
 void	destroy_persons(t_person *persons)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < persons->info->cfg.num_philo)

@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 15:56:00 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/09 16:44:52 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:50:08 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	ft_atol(const char *str)
 	return (sign * result);
 }
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	return ((int) ft_atol(str));
 }

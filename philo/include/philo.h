@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/15 13:35:49 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:05:13 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void		set_persons_to_info(t_info *info, t_person *persons);
 t_person	*create_init_persons(t_info	*info);
 
 // launch
-void	philo_launch(t_person *persons, t_info *info);
-void	*monitor_routine(void *p);
-void	*philo_routine(void *p);
+void		philo_launch(t_person *persons, t_info *info);
+void		*monitor_routine(void *p);
+void		*philo_routine(void *p);
 
 // destroy
 void		destroy_info(t_info *info);
@@ -89,17 +89,17 @@ void		destroy_eatmutexes(t_person *persons, int destroy_mutex_size);
 long		get_time_diff(long current_time, long start_time);
 
 // time
-long	get_current_time();
-void	set_start_ms(t_info *info);
-long	get_time_diff(long current_time, long start_time);
-long	get_time_stamp(long start_time);
+long		get_current_time(void);
+void		set_start_ms(t_info *info);
+long		get_time_diff(long current_time, long start_time);
+long		get_time_stamp(long start_time);
 
 // print
-void	print_dead(t_info	*info, int	id, long time_stamp);
-void	print_taken_fork(t_info	*info, int	id, long time_stamp);
-void	print_eat(t_info	*info, int	id, long time_stamp);
-void	print_sleep(t_info	*info, int	id, long time_stamp);
-void	print_think(t_info	*info, int	id, long time_stamp);
+void		print_dead(t_info *info, int id, long time_stamp);
+void		print_taken_fork(t_info *info, int id, long time_stamp);
+void		print_eat(t_info *info, int id, long time_stamp);
+void		print_sleep(t_info *info, int id, long time_stamp);
+void		print_think(t_info *info, int id, long time_stamp);
 
 // utils
 void		*ft_calloc(size_t count, size_t size);
@@ -107,6 +107,6 @@ long		ft_atol(const char *str);
 int			ft_atoi(const char *str);
 
 //test
-void		dump_info(const t_info *info);
+// void		dump_info(const t_info *info);
 
 #endif
