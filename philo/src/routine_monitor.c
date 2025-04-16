@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:24:35 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/16 14:56:22 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:13:48 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ void	*monitor_routine(void *p)
 	int		death_id;
 
 	info = (t_info *)p;
+	death_id = -1;
 	while (1)
 	{
 		if (check_finished(info, &death_id))
 		{
 			pthread_mutex_lock(&info->end_mutex);
-			print_dead(info, death_id, get_time_stamp(info->start_ms));
+			if (death_id > 0)
+				print_dead(info, death_id, get_time_stamp(info->start_ms));
 			info->finished = true;
 			pthread_mutex_unlock(&info->end_mutex);
 			break ;
