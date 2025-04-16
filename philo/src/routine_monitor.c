@@ -6,24 +6,26 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:24:35 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/15 16:00:31 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:34:08 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static	int	check_finished(t_info *info);
+static	int	check_finished(t_info *info, int *death_id);
 
 void	*monitor_routine(void *p)
 {
 	t_info *info;
+	int		death_id;
 
 	info = (t_info *)p;
 	while (1)
 	{
-		if (check_finished(info))
+		if (check_finished(info, &death_id))
 		{
 			pthread_mutex_lock(&info->end_mutex);
+			print_dead(info, death_id, get_time_stamp(info->start_ms));
 			info->finished = true;
 			pthread_mutex_unlock(&info->end_mutex);
 			break;
@@ -33,7 +35,7 @@ void	*monitor_routine(void *p)
 	return (NULL);
 }
 
-static	int	check_finished(t_info *info)
+static	int	check_finished(t_info *info, int *death_id)
 {
 	int 	i;
 	bool	is_all_finished;
@@ -45,7 +47,7 @@ static	int	check_finished(t_info *info)
 		pthread_mutex_lock(&info->persons[i].eat_mutex);
 		if (get_time_diff(get_current_time(), info->persons[i].last_eat_time) >= info->cfg.time_to_die)
 		{
-			print_dead(info, info->persons[i].id, get_time_stamp(info->start_ms));
+			*death_id = i + 1;
 			pthread_mutex_unlock(&info->persons[i].eat_mutex);
 			return (1);
 		}
