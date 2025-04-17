@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 15:45:10 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/16 15:05:13 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:22:50 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ void		print_think(t_info *info, int id, long time_stamp);
 void		*ft_calloc(size_t count, size_t size);
 long		ft_atol(const char *str);
 int			ft_atoi(const char *str);
+
+// other
+void	How_to_die_a_lonely_philosopher(t_person *person);
 
 //test
 // void		dump_info(const t_info *info);

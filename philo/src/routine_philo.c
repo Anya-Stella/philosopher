@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/17 15:54:56 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:13:43 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,16 @@ static	void	sleep_philo(t_person *person, int id);
 void	*philo_routine(void *p)
 {
 	t_person	*person;
-	int			id;
-
+	
 	person = (t_person *)p;
-	id = person->id;
+	if (person->info->cfg.num_philo == 1)
+	{
+		How_to_die_a_lonely_philosopher(person);
+		return (NULL);
+	}
 	while (1)
 	{
-		print_think(person->info, id, get_time_stamp(person->info->start_ms));
+		print_think(person->info, person->id, get_time_stamp(person->info->start_ms));
 		pthread_mutex_lock(&person->info->end_mutex);
 		if (person->info->finished)
 		{
@@ -39,10 +42,10 @@ void	*philo_routine(void *p)
 			break ;
 		}
 		pthread_mutex_unlock(&person->info->end_mutex);
-		take_fork(person, id);
-		eat_meal(person, id);
-		put_down_fork(person, id);
-		sleep_philo(person, id);
+		take_fork(person, person->id);
+		eat_meal(person, person->id);
+		put_down_fork(person, person->id);
+		sleep_philo(person, person->id);
 	}
 	return (NULL);
 }

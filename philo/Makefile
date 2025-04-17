@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 15:15:03 by tishihar          #+#    #+#              #
-#    Updated: 2025/04/14 18:36:36 by tishihar         ###   ########.fr        #
+#    Updated: 2025/04/17 17:23:52 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCS := \
 	launch_philo.c \
 	routine_monitor.c \
 	routine_philo.c \
+	lonly_philosopher.c \
 	print.c \
 	time.c \
 	utils.c \
