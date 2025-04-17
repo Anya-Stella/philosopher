@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 15:23:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/16 14:48:01 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:17:02 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,17 @@
 //         i++;
 //     }
 //     printf("===================\n");
+// }
+
+// #include <stdio.h>
+// #include <time.h>
+
+// int main(void) {
+//     clock_t start = clock();
+//     printf("Hello, world!\n");
+//     fflush(stdout);
+//     clock_t end = clock();
+//     double duration = (double)(end - start) / CLOCKS_PER_SEC;
+//     printf("Elapsed time: %f sec\n", duration);
+//     return 0;
 // }

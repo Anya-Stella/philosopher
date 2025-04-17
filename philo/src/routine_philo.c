@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/17 15:21:59 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:54:56 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,14 @@ static	void	eat_meal(t_person *person, int id)
 	pthread_mutex_lock(&person->eat_mutex);
 	person->last_eat_time = get_current_time();
 	pthread_mutex_unlock(&person->eat_mutex);
+
+
+
 	print_eat(person->info, id, get_time_stamp(person->info->start_ms));
 	usleep(person->info->cfg.time_to_eat * 1000);
+
+
+	
 	pthread_mutex_lock(&person->eat_mutex);
 	person->eat_count++;
 	pthread_mutex_unlock(&person->eat_mutex);
