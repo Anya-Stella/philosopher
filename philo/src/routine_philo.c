@@ -6,14 +6,14 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/16 15:01:40 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/17 15:21:59 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static	void	take_fork(t_person *person, int id);
-static	void	put_down_fork(t_person *person);
+static	void	put_down_fork(t_person *person,int id);
 static	void	eat_meal(t_person *person, int id);
 static	void	sleep_philo(t_person *person, int id);
 
@@ -41,7 +41,7 @@ void	*philo_routine(void *p)
 		pthread_mutex_unlock(&person->info->end_mutex);
 		take_fork(person, id);
 		eat_meal(person, id);
-		put_down_fork(person);
+		put_down_fork(person, id);
 		sleep_philo(person, id);
 	}
 	return (NULL);
@@ -69,10 +69,18 @@ static	void	take_fork(t_person *person, int id)
 	}
 }
 
-static void	put_down_fork(t_person *person)
+static void	put_down_fork(t_person *person, int id)
 {
-	pthread_mutex_unlock(person->l_fork);
-	pthread_mutex_unlock(person->r_fork);
+	if (id % 2 == 1)
+	{
+		pthread_mutex_unlock(person->r_fork);
+		pthread_mutex_unlock(person->l_fork);
+	}
+	else
+	{
+		pthread_mutex_unlock(person->l_fork);
+		pthread_mutex_unlock(person->r_fork);
+	}
 }
 
 static	void	eat_meal(t_person *person, int id)
