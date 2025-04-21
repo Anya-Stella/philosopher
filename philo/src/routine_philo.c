@@ -6,14 +6,14 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:26:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/04/21 17:36:31 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:44:19 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 static	void	take_fork(t_person *person, int id);
-static	void	put_down_fork(t_person *person,int id);
+static	void	put_down_fork(t_person *person, int id);
 static	void	eat_meal(t_person *person, int id);
 static	void	sleep_philo(t_person *person, int id);
 
@@ -25,16 +25,17 @@ static	void	sleep_philo(t_person *person, int id);
 void	*philo_routine(void *p)
 {
 	t_person	*person;
-	
+
 	person = (t_person *)p;
 	if (person->info->cfg.num_philo == 1)
 	{
-		How_to_die_a_lonely_philosopher(person);
+		how_to_die_a_lonely_philosopher(person);
 		return (NULL);
 	}
 	while (1)
 	{
-		print_think(person->info, person->id, get_time_stamp(person->info->start_ms));
+		print_think(person->info, person->id,
+			get_time_stamp(person->info->start_ms));
 		pthread_mutex_lock(&person->info->end_mutex);
 		if (person->info->finished)
 		{
